@@ -1587,14 +1587,13 @@ fi
 }
 
 start_dnsserver_confset() {
-sed -Ei '/no-resolv|server=127.0.0.1#8053|dns-forward-max=1000|min-cache-ttl=1800|ss_tproxy/d' /etc/storage/dnsmasq/dnsmasq.conf
+sed -Ei '/no-resolv|server=127.0.0.1#8053|dns-forward-max=1000|min-cache-ttl|ss_tproxy/d' /etc/storage/dnsmasq/dnsmasq.conf
 echo "#ss_tproxy" >> /etc/storage/dnsmasq/dnsmasq.conf
 if [ "$ss_pdnsd_all" = "1" ] || is_global_mode ; then
 	cat >> "/etc/storage/dnsmasq/dnsmasq.conf" <<-\EOF
 no-resolv #ss_tproxy
 server=127.0.0.1#8053 #ss_tproxy
 dns-forward-max=1000 #ss_tproxy
-min-cache-ttl=1800 #ss_tproxy
 EOF
 fi
 if is_chnlist_mode; then
