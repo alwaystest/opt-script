@@ -926,6 +926,7 @@ update_chnlist_file() {
 }
 
 update_chnlist_ipset() {
+    logger -t "【update_chnlistttttt】" "...."
 	mkdir -p /opt/app/ss_tproxy/dnsmasq.d
 	if is_chnlist_mode; then
 		[ ! -s /opt/app/ss_tproxy/rule/chnlist.txt ] && update_chnlist_file
@@ -979,7 +980,7 @@ update_chnlist_ipset() {
 		[ "$wan_dnsenable_x" != "1" ] && DNS_china=`nvram get wan_dns1_x |cut -d ' ' -f1`
 		[ -z "$DNS_china" ] && DNS_china="$dns_direct"
 		is_true "$ipv4" && cat /opt/app/ss_tproxy/rule/chnlist.txt | sed -e 's@^cn$@com.cn@g' | sort -u | sed 's/^[[:space:]]*//g; /^$/d; /#/d' | awk '{printf("server=/%s/'"$DNS_china"'\n", $1)}' > /opt/app/ss_tproxy/dnsmasq.d/accelerated-domains.china.conf
-		is_true "$ipv6" && cat /opt/app/ss_tproxy/rule/chnlist.txt | sed -e 's@^cn$@com.cn@g' | sort -u | sed 's/^[[:space:]]*//g; /^$/d; /#/d' | awk '{printf("server=/%s/'"$dns_direct6"'\n", $1)}' > /opt/app/ss_tproxy/dnsmasq.d/accelerated-domains.china.conf
+		is_true "$ipv6" && cat /opt/app/ss_tproxy/rule/chnlist.txt | sed -e 's@^cn$@com.cn@g' | sort -u | sed 's/^[[:space:]]*//g; /^$/d; /#/d' | awk '{printf("server=/%s/'"$dns_direct6"'\n", $1)}' >> /opt/app/ss_tproxy/dnsmasq.d/accelerated-domains.china.conf
 		logger -t "【update_chnlist】" "配置更新，完成加载 chnlist 规则...."
 		else
 		logger -t "【update_chnlist】" "更新错误！！！ /opt/app/ss_tproxy/rule/chnlist.txt 规则为空...."
