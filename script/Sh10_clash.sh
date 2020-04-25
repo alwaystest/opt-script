@@ -323,9 +323,9 @@ ss_tproxy_mode_x=`nvram get app_110`
  # sstp_set mode='chnroute'
 sstp_set mode='global'
  # sstp_set mode='chnlist'
-sstp_set ipv4='true' ; sstp_set ipv6='false' ;
+ # sstp_set ipv4='true' ; sstp_set ipv6='false' ;
  # sstp_set ipv4='false' ; sstp_set ipv6='true' ;
- # sstp_set ipv4='true' ; sstp_set ipv6='true' ;
+sstp_set ipv4='true' ; sstp_set ipv6='true' ;
 sstp_set tproxy='false' # true:TPROXY+TPROXY; false:REDIRECT+TPROXY
 sstp_set tcponly='true' # true:仅代理TCP流量; false:代理TCP和UDP流量
 sstp_set selfonly='false'  # true:仅代理本机流量; false:代理本机及"内网"流量
@@ -347,10 +347,10 @@ sstp_set proxy_stopcmd='date'
 DNS_china=`nvram get wan0_dns |cut -d ' ' -f1`
 [ -z "$DNS_china" ] && DNS_china="114.114.114.114"
 sstp_set dns_direct="$DNS_china"
-sstp_set dns_direct='114.114.114.114'
+sstp_set dns_direct="114.114.114.114"
 sstp_set dns_direct6='240C::6666'
-sstp_set dns_remote='8.8.8.8#53'
-sstp_set dns_remote6='2001:4860:4860::8888#53'
+sstp_set dns_remote='127.0.0.1#8053'
+sstp_set dns_remote6='::1#8053'
  # sstp_set dns_direct='8.8.8.8' # 回国模式
  # sstp_set dns_direct6='2001:4860:4860::8888' # 回国模式
  # sstp_set dns_remote='114.114.114.114#53' # 回国模式
