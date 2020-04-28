@@ -63,6 +63,6 @@ Sh04_mento_hust=272f839949be6b83b1e1b971828dc75b
 Sh03_jbls=cdb022feac984d086359c963a8743561
 Sh02_kms=73c0fefab4e8acf09098784a5dc93c84
 Sh01_mountopt=881d7798de6f6d1790e0dfae2aa4f8bc
-sh_upscript=7aef3d8b98f49c44537eef43d5316615
+sh_upscript=ca2d8dfb9918b5f55aac6f0b66bfa96c
 scriptt=2020-04-26
 nvram set pdcn_uuid_enable=0 # 关闭固件使用情况统计
